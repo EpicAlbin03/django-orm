@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ course.name }}{% endblock %}
+
+{% block content %}
+<h1>{{ course.code }} — {{ course.name }}</h1>
+
+{% if course.description %}
+<p>{{ course.description }}</p>
+{% endif %}
+
+<h2>Enrolled Students ({{ students|length }})</h2>
+
+{# TODO: create a table showing students in this course #}
+{# Columns: Name (linked to detail), Email, Grade #}
+{# Handle empty: "No students enrolled yet." #}
+
+<p><a href="{% url 'course_list' %}">← Back to courses</a></p>
+{% endblock %}
