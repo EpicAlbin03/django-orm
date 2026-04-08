@@ -9,11 +9,6 @@ def course_detail(request, course_id):
     pass
 
 
-def delete_student(request, student_id):
-    # TODO: get student, delete it, redirect to student_list
-    pass
-
-
 def edit_student(request, student_id):
     # TODO: GET — render edit form pre-filled with student data + all courses
     # TODO: POST — update fields from request.POST, save(), redirect to detail

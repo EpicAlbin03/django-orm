@@ -26,10 +26,6 @@ def student_list(request: HttpRequest):
 def student_detail(request: HttpRequest, student_id: int):
     """Show details for a single student."""
     student = get_object_or_404(Student, id=student_id)
-
-    if request.method == "POST":
-        student.delete()
-        return redirect("student_list")
     return render(request, "student_detail.html", {"student": student})
 
 
@@ -44,6 +40,13 @@ def add_student(request: HttpRequest):
         form = StudentForm()
 
     return render(request, "add_student.html", {"form": form})
+
+
+def delete_student(request: HttpRequest, student_id: int):
+    student = get_object_or_404(Student, id=student_id)
+    if request.method == "POST":
+        student.delete()
+    return redirect("student_list")
 
 
 def edit_student(request: HttpRequest, student_id: int):
