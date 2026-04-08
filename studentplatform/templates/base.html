@@ -17,7 +17,7 @@
       <a href="{% url 'student_list' %}">Students</a>
       <a href="{% url 'add_student' %}">Add Student</a>
 
-      <p>{{ students_count }} Students</p>
+      <p>{{ students_count }} Student{% if students_count > 1 %}s{% endif %}</p>
     </nav>
 
     <main>{% block content %}{% endblock %}</main>
