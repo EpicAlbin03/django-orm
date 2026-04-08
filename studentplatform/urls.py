@@ -13,4 +13,6 @@ urlpatterns = [  # type: ignore
         "students/<int:student_id>/delete/", views.delete_student, name="delete_student"
     ),
     path("students/<int:student_id>/edit/", views.edit_student, name="edit_student"),
+    # path("courses/", views.course_list, name="course_list"),
+    # path("courses/<int:course_id>/", views.course_detail, name="course_detail"),
 ]
