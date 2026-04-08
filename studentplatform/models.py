@@ -1,8 +1,13 @@
+from typing import TYPE_CHECKING
+
 from django.db import models
 
 
 class Course(models.Model):
     """A course that students can enrol in."""
+
+    if TYPE_CHECKING:
+        students: models.Manager["Student"]
 
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=10, unique=True)

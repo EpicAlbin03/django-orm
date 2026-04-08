@@ -31,7 +31,9 @@
     <td>{{student.date_of_birth}}</td>
     <td>{{student.grade}}</td>
     <td>{{student.is_active}}</td>
-    <td>{{student.course}}</td>
+    <td>
+      <a href={% url 'course_detail' student.course.id %}>{{student.course.name}}</a>
+    </td>
   </tr>
   {% endfor %}
 </table>

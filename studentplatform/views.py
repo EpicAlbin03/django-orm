@@ -78,5 +78,7 @@ def course_list(request: HttpRequest):
 def course_detail(request: HttpRequest, course_id: int):
     """Show details for a single course."""
     course = get_object_or_404(Course, id=course_id)
-    courses = Course.objects.all()
-    return render(request, "course_detail.html", {"course": course, "courses": courses})
+    students = course.students.all()
+    return render(
+        request, "course_detail.html", {"course": course, "students": students}
+    )
