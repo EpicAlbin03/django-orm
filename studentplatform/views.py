@@ -2,7 +2,7 @@ from django.http import HttpRequest
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import StudentForm
-from .models import Student
+from .models import Course, Student
 
 
 def home(request: HttpRequest):
@@ -43,6 +43,7 @@ def add_student(request: HttpRequest):
 
 
 def delete_student(request: HttpRequest, student_id: int):
+    """Delete a student and redirect to the list."""
     student = get_object_or_404(Student, id=student_id)
     if request.method == "POST":
         student.delete()
@@ -64,3 +65,20 @@ def edit_student(request: HttpRequest, student_id: int):
         form = StudentForm(instance=student)
 
     return render(request, "edit_student.html", {"form": form, "student": student})
+
+
+def course_list(request: HttpRequest):
+    """List all courses in a table."""
+    courses = Course.objects.all()
+    return render(
+        request, "student_list.html", {"courses": courses, "count": len(courses)}
+    )
+
+
+def course_detail(request: HttpRequest, course_id: int):
+    """Show details for a single course."""
+    course = get_object_or_404(Course, id=course_id)
+    courses = Course.objects.all()
+    return render(
+        request, "student_detail.html", {"course": course, "courses": courses}
+    )
