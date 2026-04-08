@@ -22,8 +22,10 @@
     <th>Id</th>
     <th>Name</th>
     <th>Email</th>
-    <th>Course</th>
+    <th>Date of Birth</th>
     <th>Grade</th>
+    <th>Active</th>
+    <th>Course</th>
   </tr>
   {% for student in students %}
   <tr>
@@ -32,8 +34,10 @@
         <a href={% url 'student_detail' student.id %}>{{student.name}}</a>
     </td>
     <td>{{student.email}}</td>
-    <td>{{student.course}}</td>
+    <td>{{student.date_of_birth}}</td>
     <td>{{student.grade}}</td>
+    <td>{{student.is_active}}</td>
+    <td>{{student.course}}</td>
   </tr>
   {% endfor %}
 </table>

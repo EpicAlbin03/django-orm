@@ -1,9 +1,8 @@
 from django.http import HttpRequest
 
-# from studentplatform.views import STUDENTS
-from studentplatform.models import Students
+from .models import Student
 
 
 def students_context(request: HttpRequest):
-    students = Students.objects.all()
+    students = Student.objects.all()
     return {"students_count": len(students)}
