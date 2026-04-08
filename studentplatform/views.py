@@ -71,7 +71,7 @@ def course_list(request: HttpRequest):
     """List all courses in a table."""
     courses = Course.objects.all()
     return render(
-        request, "student_list.html", {"courses": courses, "count": len(courses)}
+        request, "course_list.html", {"courses": courses, "count": len(courses)}
     )
 
 
@@ -79,6 +79,4 @@ def course_detail(request: HttpRequest, course_id: int):
     """Show details for a single course."""
     course = get_object_or_404(Course, id=course_id)
     courses = Course.objects.all()
-    return render(
-        request, "student_detail.html", {"course": course, "courses": courses}
-    )
+    return render(request, "course_detail.html", {"course": course, "courses": courses})
