@@ -1,6 +1,17 @@
 from django.contrib import admin
 
-from .models import Students
+from .models import Course, Student
 
-# Register your models here.
-admin.site.register(Students)
+
+@admin.register(Course)
+class CourseAdmin(admin.ModelAdmin[Course]):
+    list_display = ["code", "name"]
+    search_fields = ["name", "code"]
+
+
+@admin.register(Student)
+class StudentAdmin(admin.ModelAdmin[Student]):
+    list_display = ["name", "email", "course", "grade", "is_active"]
+    list_filter = ["course", "grade", "is_active"]
+    search_fields = ["name", "email"]
+    list_per_page = 20
